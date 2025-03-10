@@ -71,10 +71,23 @@ void SceneTreeTimer::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("set_time_left", "time"), &SceneTreeTimer::set_time_left);
 	ClassDB::bind_method(D_METHOD("get_time_left"), &SceneTreeTimer::get_time_left);
 
+	//custom
+	//ClassDB::bind_method(D_METHOD("copy"), &SceneTreeTimer::copy);
+
 	ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "time_left", PROPERTY_HINT_NONE, "suffix:s"), "set_time_left", "get_time_left");
 
 	ADD_SIGNAL(MethodInfo("timeout"));
 }
+
+//custom
+//SceneTreeTimer SceneTreeTimer::copy() const{
+//	SceneTreeTimer t;
+//	t.time_left 			= time_left;
+//	t.process_always 		= process_always;
+//	t.process_in_physics 	= process_in_physics;
+//	t.ignore_time_scale 	= ignore_time_scale;
+//	return t;
+//}
 
 void SceneTreeTimer::set_time_left(double p_time) {
 	time_left = p_time;
@@ -1625,6 +1638,11 @@ void SceneTree::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("is_physics_interpolation_enabled"), &SceneTree::is_physics_interpolation_enabled);
 
 	ClassDB::bind_method(D_METHOD("queue_delete", "obj"), &SceneTree::queue_delete);
+
+	// CUSTOM: makes these directly accessible in gdscript
+	ClassDB::bind_method(D_METHOD("process"), &SceneTree::process);
+	ClassDB::bind_method(D_METHOD("physics_process"), &SceneTree::physics_process);
+	ClassDB::bind_method(D_METHOD("initialize"), &SceneTree::initialize);
 
 	MethodInfo mi;
 	mi.name = "call_group_flags";

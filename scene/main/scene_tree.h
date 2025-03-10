@@ -61,6 +61,8 @@ protected:
 	static void _bind_methods();
 
 public:
+	//SceneTreeTimer copy() const;
+
 	void set_time_left(double p_time);
 	double get_time_left() const;
 
