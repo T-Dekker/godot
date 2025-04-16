@@ -45,6 +45,14 @@ void Math::seed(uint64_t x) {
 	default_rand.seed(x);
 }
 
+uint64_t Math::get_random_state() {
+	return default_rand.get_state();
+}
+
+void Math::set_random_state(uint64_t p_state) {
+	default_rand.set_state(p_state);
+}
+
 void Math::randomize() {
 	default_rand.randomize();
 }

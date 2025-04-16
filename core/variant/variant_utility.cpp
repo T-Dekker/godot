@@ -794,6 +794,14 @@ void VariantUtilityFunctions::seed(int64_t s) {
 	return Math::seed(s);
 }
 
+uint64_t VariantUtilityFunctions::get_random_state() {
+	return Math::get_random_state();
+}
+
+void VariantUtilityFunctions::set_random_state(uint64_t p_state) {
+	Math::set_random_state(p_state);
+}
+
 PackedInt64Array VariantUtilityFunctions::rand_from_seed(int64_t seed) {
 	uint64_t s = seed;
 	PackedInt64Array arr;
@@ -1787,6 +1795,8 @@ void Variant::_register_variant_utility_functions() {
 	FUNCBINDR(randf_range, sarray("from", "to"), Variant::UTILITY_FUNC_TYPE_RANDOM);
 	FUNCBINDR(randfn, sarray("mean", "deviation"), Variant::UTILITY_FUNC_TYPE_RANDOM);
 	FUNCBIND(seed, sarray("base"), Variant::UTILITY_FUNC_TYPE_RANDOM);
+	FUNCBINDR(get_random_state, sarray(), Variant::UTILITY_FUNC_TYPE_RANDOM);
+	FUNCBIND(set_random_state, sarray("state"), Variant::UTILITY_FUNC_TYPE_RANDOM);
 	FUNCBINDR(rand_from_seed, sarray("seed"), Variant::UTILITY_FUNC_TYPE_RANDOM);
 
 	// Utility
